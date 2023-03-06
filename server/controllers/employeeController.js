@@ -42,14 +42,38 @@ const setEmployee = asyncHandler(async (req, res) => {
 // @route   PUT/api/employees/:id
 // @access  Public
 const updateEmployee = asyncHandler(async (req, res) => {
-  res.status(200).json('update employees');
+  const employee = await Employee.findById(req.params.id);
+
+  if (!employee) {
+    res.status(404);
+    throw new Error('Employee not found');
+  }
+  // console.log(`req.params.id =${req.params.id}    req.body=${req.body.fullName} `);
+  const updatedEmployee = await Employee.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      returnOriginal: false,
+    }
+  );
+  console.log('hi');
+  res.status(200).json(updatedEmployee);
 });
 
 // @desc    delete employee
 // @route   DELETE/api/employees/:id
 // @access  Public
 const deleteEmployee = asyncHandler(async (req, res) => {
-  res.status(200).json('delete employees');
+  const employee = await Employee.findById(req.params.id);
+
+  if (!employee) {
+    res.status(400);
+    throw new Error('Employee not found');
+  }
+
+  await Employee.deleteOne({ _id: req.params.id });
+
+  res.status(200).json(employee);
 });
 
 module.exports = {
