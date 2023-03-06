@@ -16,8 +16,9 @@ const SelectType = () => {
   }, [employeeType, dispatch]);
 
   return (
-    <div>
+    <div className="col-md-3">
       <select
+        class="form-select"
         name="employeeType"
         id="employeeType"
         value={employeeType}
@@ -30,6 +31,10 @@ const SelectType = () => {
         <option value="Contract Basis">Contract Basis</option>
         <option value="Other">Other</option>
       </select>
+
+      <button class="btn btn-primary" type="submit">
+        Add People
+      </button>
     </div>
   );
 };

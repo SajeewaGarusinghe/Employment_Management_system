@@ -1,9 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteEmployee, getEmployees, reset } from '../features/employeeSlice';
 
 const Table = () => {
-  const { employees, displayEmployees,employeeType } = useSelector(
-    (state) => state.employee
-  );
+  const { displayEmployees } = useSelector((state) => state.employee);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {};
+  }, [displayEmployees]);
 
   return (
     <div>
@@ -27,7 +32,19 @@ const Table = () => {
               <td>{employee.employeeType}</td>
               <td>{employee.experience}</td>
               <td>
-                <button>Edit</button> <button>delete</button>{' '}
+                <button className="btn" style={{ color: 'blue' }}>
+                  Edit
+                </button>
+                <button
+                  className="btn"
+                  style={{ color: 'red' }}
+                  onClick={() => {
+                    console.log(employee._id);
+                    dispatch(deleteEmployee(employee._id));
+                  }}
+                >
+                  delete
+                </button>{' '}
               </td>
             </tr>
           ))}

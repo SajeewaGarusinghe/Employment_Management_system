@@ -6,15 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
-      <Router>
-        <div className="container">
-          <Header/>
-          <Routes>
-            <Route path="/" element={<DashBoard />}></Route>
-            <Route path="/form" element={<EmployeeForm />}></Route>
-          </Routes>
-        </div>
-      </Router>
+      <DashBoard/>
     </>
   );
 }

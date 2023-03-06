@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getEmployees, reset } from '../features/employeeSlice';
+import EmployeeForm from './EmployeeForm';
 import SelectType from './SelectType';
 import Table from './Table';
 
@@ -25,8 +26,12 @@ const DashBoard = () => {
 
   return (
     <div>
-      <SelectType/>
-      <Table  />
+      <div className="dashbord">
+        <SelectType />
+        <Table />
+      </div>
+
+      <EmployeeForm />
     </div>
   );
 };

@@ -115,6 +115,7 @@ export const employeeSlice = createSlice({
         state.employees = state.employees.filter(
           (employee) => employee._id !== action.payload.id
         );
+        state.displayEmployees = state.employees;
       })
       .addCase(deleteEmployee.rejected, (state, action) => {
         state.isLoading = false;
