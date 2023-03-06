@@ -29,48 +29,48 @@ const employeeSchema = mongoose.Schema(
     },
     displayName: {
       type: String,
-      required: [true, 'please enter Display name'],
+      required: [false, 'please enter Display name'],
     },
     gender: {
       type: String,
-      required: [true, 'please enter Display name'],
+      required: [false, 'please enter Display name'],
     },
     birthday: {
       type: Date,
-      required: [true, 'Please enter valid birthday'],
+      required: [false, 'Please enter valid birthday'],
     },
     email: {
       type: String,
       required: [true, 'please enter a email'],
-      unique: true,
+      unique:  true,
     },
     mobileNo: {
       type: String,
-      required: [true, 'please enter valid phone number'],
+      required: [false, 'please enter valid phone number'],
     },
     designation: {
       type: String,
-      required: [true, 'please enter valid designation'],
+      required: [false, 'please enter valid designation'],
     },
     employeeType: {
       type: String,
-      required: [true, 'please enter valid employee type'],
+      required: [false, 'please enter valid employee type'],
     },
     joinedDate: {
       type: Date,
-      required: [true, 'Please enter valid date'],
+      required: [false, 'Please enter valid date'],
     },
     experience: {
       type: String,
-      required: [true, 'Please enter valid experience'],
+      required: [false, 'Please enter valid experience'],
     },
     salary: {
       type: String,
-      required: [true, 'Please enter salary'],
+      required: [false, 'Please enter salary'],
     },
     notes: {
       type: String,
-      required: [true, 'Please enter note'],
+      required: [false, 'Please enter note'],
     },
     employeeId: {
       type: Number,

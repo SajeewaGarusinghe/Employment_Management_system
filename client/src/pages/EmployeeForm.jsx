@@ -1,21 +1,22 @@
 import { useReducer } from 'react';
 import './EmployeeFrom.css';
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../features/employeeSlice';
 
 const initialFormData = {
   fullName: '',
   nameWithInitial: '',
   displayName: '',
-  gender: '',
+  gender: 'male',
   birthday: '',
   email: '',
   mobileNo: '',
   designation: '',
-  employeeType: '',
+  employeeType: 'Full time',
   joinedDate: '',
-  experience: '',
+  experience: '01 Years',
   salary: '',
   notes: '',
-  employeeId: '',
 };
 
 const formReducer = (state, action) => {
@@ -53,9 +54,13 @@ const formReducer = (state, action) => {
 
 function EmployeeForm() {
   const [formData, setFormData] = useReducer(formReducer, initialFormData);
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // console.log(formData);
+    dispatch(addEmployee(formData));
+    // setFormData(initialFormData);
   };
 
   return (
@@ -72,7 +77,6 @@ function EmployeeForm() {
             value={formData.fullName}
             placeholder="Full Name"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'fullName', payload: e.target.value });
             }}
           />
@@ -84,7 +88,6 @@ function EmployeeForm() {
             value={formData.nameWithInitial}
             placeholder="Name with initials"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'nameWithInitial', payload: e.target.value });
             }}
           />
@@ -96,7 +99,6 @@ function EmployeeForm() {
             value={formData.displayName}
             placeholder="Display Name"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'displayName', payload: e.target.value });
             }}
           />
@@ -121,8 +123,9 @@ function EmployeeForm() {
             name="birthday"
             id="birthday"
             value={formData.birthday}
+            min="1963-03-07"
+            max="2005-03-07"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'birthday', payload: e.target.value });
             }}
           />
@@ -135,7 +138,6 @@ function EmployeeForm() {
             value={formData.email}
             placeholder="Email"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'email', payload: e.target.value });
             }}
           />
@@ -144,10 +146,9 @@ function EmployeeForm() {
             type="text"
             name="mobileNo"
             id="mobileNo"
-            value={formData.fullName}
+            value={formData.mobileNo}
             placeholder="Mobile Number"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'mobileNo', payload: e.target.value });
             }}
           />
@@ -159,7 +160,6 @@ function EmployeeForm() {
             value={formData.designation}
             placeholder="Designation"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'designation', payload: e.target.value });
             }}
           />
@@ -169,7 +169,6 @@ function EmployeeForm() {
             id="employeeType"
             value={formData.employeeType}
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'employeeType', payload: e.target.value });
             }}
           >
@@ -184,9 +183,10 @@ function EmployeeForm() {
             type="date"
             name="joinedDate"
             id="joinedDate"
+            min="1963-03-06"
+            max="2023-03-06"
             value={formData.joinedDate}
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'joinedDate', payload: e.target.value });
             }}
           />
@@ -197,7 +197,6 @@ function EmployeeForm() {
             id="experience"
             value={formData.experience}
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'experience', payload: e.target.value });
             }}
           >
@@ -219,13 +218,21 @@ function EmployeeForm() {
             value={formData.salary}
             placeholder="Salary"
             onChange={(e) => {
-              console.log(e.target.value);
               setFormData({ type: 'salary', payload: e.target.value });
             }}
           />
 
           <label htmlFor="notes">Personal Notes</label>
-          <textarea id="notes" name="notes" rows="4" cols="50"></textarea>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            cols="50"
+            value={formData.notes}
+            onChange={(e) => {
+              setFormData({ type: 'notes', payload: e.target.value });
+            }}
+          ></textarea>
         </div>
         <div className="form-group">
           <button className="btn btn-block">cancel</button>
