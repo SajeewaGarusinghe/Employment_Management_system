@@ -3,6 +3,8 @@ import employeeService from './employeeService';
 
 const initialState = {
   employees: [],
+  employeeType: '',
+  displayEmployees: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -14,7 +16,6 @@ export const addEmployee = createAsyncThunk(
   'employees/add',
   async (employeeData, thunkAPI) => {
     try {
-       
       return await employeeService.addEmployee(employeeData);
     } catch (error) {
       const message =
@@ -69,6 +70,12 @@ export const employeeSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    setType: (state, action) => {
+      state.employeeType = action.payload;
+      state.displayEmployees = state.employees.filter(
+        (employee) => employee.employeeType == action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -92,6 +99,7 @@ export const employeeSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.employees = action.payload;
+        state.displayEmployees = action.payload;
       })
       .addCase(getEmployees.rejected, (state, action) => {
         state.isLoading = false;
@@ -116,5 +124,5 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset } = employeeSlice.actions;
+export const { reset, setType } = employeeSlice.actions;
 export default employeeSlice.reducer;
