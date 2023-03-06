@@ -1,5 +1,22 @@
 const mongoose = require('mongoose');
 
+// const employeeSchema = mongoose.Schema(
+//   {
+//     fullName: {
+//       type: String,
+//       required: [true, 'please enter full name'],
+//     },
+
+//     email: {
+//       type: String,
+//       required: [true, 'please enter a email'],
+//       unique: true,
+//     },
+//   },
+//   {
+//     timestamps: true, //to create updated and created at field automatically
+//   }
+// );
 const employeeSchema = mongoose.Schema(
   {
     fullName: {
