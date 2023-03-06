@@ -19,6 +19,19 @@ const setEmployee = asyncHandler(async (req, res) => {
     throw new Error('Please add a text field');
   }
 
+  let newId;
+  const employees = await Employee.find();
+  if (employees == 0) {
+    newId = 1;
+  } else {
+    //search for employee that have max id
+    const maxIdEmployee = await Employee.findOne({}, null, {
+      sort: { employeeId: -1 },
+    });
+    //increment max id by 1 to get new id
+    newId = maxIdEmployee.employeeId + 1;
+  }
+
   const employee = await Employee.create({
     fullName: req.body.fullName,
     nameWithInitial: req.body.nameWithInitial,
@@ -33,6 +46,7 @@ const setEmployee = asyncHandler(async (req, res) => {
     experience: req.body.experience,
     salary: req.body.salary,
     notes: req.body.notes,
+    employeeId: newId,
   });
 
   res.status(200).json(employee);
@@ -56,7 +70,7 @@ const updateEmployee = asyncHandler(async (req, res) => {
       returnOriginal: false,
     }
   );
-  console.log('hi');
+
   res.status(200).json(updatedEmployee);
 });
 

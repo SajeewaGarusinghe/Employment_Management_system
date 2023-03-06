@@ -72,10 +72,15 @@ const employeeSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please enter note'],
     },
+    employeeId: {
+      type: Number,
+    },
   },
   {
     timestamps: true, //to create updated and created at field automatically
   }
 );
+
+
 
 module.exports = mongoose.model('Employee', employeeSchema);
