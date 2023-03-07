@@ -1,5 +1,4 @@
 import { useEffect, useReducer } from 'react';
-import './EmployeeFrom.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addEmployee, updateEmployee } from '../features/employeeSlice';
 
@@ -59,7 +58,9 @@ const formReducer = (state, action) => {
 function EmployeeForm() {
   const [formData, setFormData] = useReducer(formReducer, initialFormData);
   const dispatch = useDispatch();
-  const { editMode, editEmployee,employees } = useSelector((state) => state.employee);
+  const { editMode, editEmployee, employees } = useSelector(
+    (state) => state.employee
+  );
 
   useEffect(() => {
     if (editMode) {
@@ -68,7 +69,7 @@ function EmployeeForm() {
     return () => {
       setFormData({ type: 'reset' });
     };
-  }, [editMode, editEmployee,employees]);
+  }, [editMode, editEmployee, employees]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -78,8 +79,6 @@ function EmployeeForm() {
     } else {
       dispatch(updateEmployee(formData));
     }
-
-    // setFormData(initialFormData);
   };
 
   const text = editMode
@@ -87,7 +86,7 @@ function EmployeeForm() {
     : 'Add People';
 
   return (
-    <div className="dashbord" style={{display:""}}>
+    <div className="dashbord" style={{ display: '' }}>
       <div className="form">
         <div style={{ color: 'blue' }}>
           <label htmlFor="text">{text}</label>

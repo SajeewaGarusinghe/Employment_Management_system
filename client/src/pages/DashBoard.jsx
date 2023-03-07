@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getEmployees, reset } from '../features/employeeSlice';
-import EmployeeForm from './EmployeeForm';
-import SelectType from './SelectType';
-import Tabel_Pagination from './Tabel_Pagination';
-import Table from './Table';
+import EmployeeForm from '../components/EmployeeForm';
+
+import TableItems from './TableItems';
+import Spinner from '../components/Spinner';
 
 const DashBoard = () => {
   const dispatch = useDispatch();
@@ -26,13 +26,13 @@ const DashBoard = () => {
     };
   }, [isError, message, dispatch]);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
-      {/* <div className="dashbord">
-        <SelectType />
-        <Table />
-      </div> */}
-      <Tabel_Pagination />
+      <TableItems />
       {showForm && <EmployeeForm />}
     </div>
   );

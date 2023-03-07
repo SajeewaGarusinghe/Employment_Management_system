@@ -5,7 +5,6 @@ MONGO_URL =
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI || MONGO_URL);
-    // console.log(`MongoDB Connected :💥 ${conn.connection.host}`.cyan.underline);
     console.log(`MongoDB Connected💥`.cyan.underline);
   } catch (err) {
     console.log(err);

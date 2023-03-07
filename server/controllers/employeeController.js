@@ -14,9 +14,6 @@ const getEmployees = asyncHandler(async (req, res) => {
 // @route   POST /api/employees
 // @access  Public
 const setEmployee = asyncHandler(async (req, res) => {
-
-   console.log(">>>>");
-   console.log(req.body);
   if (!req.body) {
     res.status(400);
     throw new Error('Please add a text field');

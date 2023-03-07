@@ -24,7 +24,7 @@ const SelectType = () => {
       <div className="row">
         <div className="col-2">
           <select
-            class="form-select"
+            className="form-select"
             name="employeeType"
             id="employeeType"
             value={employeeType}
@@ -40,7 +40,11 @@ const SelectType = () => {
         </div>
 
         <div className="col-3">
-          <button class="btn btn-primary" type="submit" onClick={addHandler}>
+          <button
+            className="btn btn-primary"
+            type="submit"
+            onClick={addHandler}
+          >
             Add People
           </button>
         </div>

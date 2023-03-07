@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteEmployee,
   setEdit,
-  setPage,
   setSortedData,
   setSortedData1,
 } from '../features/employeeSlice';
@@ -69,13 +68,13 @@ const Table = () => {
           <tr>
             <th scope="col">
               Display Name{' '}
-              <button onClick={nameSortHandler} class="btn btn-secondary">
+              <button onClick={nameSortHandler} className="btn btn-secondary">
                 sort{' '}
               </button>
             </th>
             <th scope="col">
               Emp ID{' '}
-              <button onClick={IdSortHandler} class="btn btn-secondary">
+              <button onClick={IdSortHandler} className="btn btn-secondary">
                 {' '}
                 sort{' '}
               </button>
