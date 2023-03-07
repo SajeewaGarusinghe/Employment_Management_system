@@ -164,6 +164,7 @@ export const employeeSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.editMode = false;
+        state.showForm = false;
         state.editEmployee = '';
         const updatedEmployeeArr = original(state.employees).filter(
           (e) => e._id !== action.payload._id
