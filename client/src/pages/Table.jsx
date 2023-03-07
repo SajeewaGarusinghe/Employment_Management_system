@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteEmployee, getEmployees, reset } from '../features/employeeSlice';
+import {
+  deleteEmployee,
+  getEmployees,
+  reset,
+  updateEmployee,
+  setEdit,
+} from '../features/employeeSlice';
 
 const Table = () => {
   const { displayEmployees } = useSelector((state) => state.employee);
@@ -32,7 +38,13 @@ const Table = () => {
               <td>{employee.employeeType}</td>
               <td>{employee.experience}</td>
               <td>
-                <button className="btn" style={{ color: 'blue' }}>
+                <button
+                  className="btn"
+                  style={{ color: 'blue' }}
+                  onClick={() => {
+                    dispatch(setEdit(employee));
+                  }}
+                >
                   Edit
                 </button>
                 <button
