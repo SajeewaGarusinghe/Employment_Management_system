@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
- 
+
 import { getEmployees, reset } from '../features/employeeSlice';
 import EmployeeForm from './EmployeeForm';
 import SelectType from './SelectType';
@@ -10,7 +10,7 @@ import Table from './Table';
 const DashBoard = () => {
   const dispatch = useDispatch();
 
-  const { isLoading, isError, message } = useSelector(
+  const { isLoading, isError, message, showForm } = useSelector(
     (state) => state.employee
   );
 
@@ -27,14 +27,13 @@ const DashBoard = () => {
   }, [isError, message, dispatch]);
 
   return (
-    <div >
+    <div>
       {/* <div className="dashbord">
         <SelectType />
         <Table />
       </div> */}
-      <Tabel_Pagination/>
-
-      <EmployeeForm />
+      <Tabel_Pagination />
+      {showForm && <EmployeeForm />}
     </div>
   );
 };

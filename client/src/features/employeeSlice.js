@@ -9,6 +9,7 @@ const initialState = {
   currentRecords: [],
   editMode: false,
   editEmployee: '',
+  showForm:false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -100,6 +101,7 @@ export const employeeSlice = createSlice({
     setEdit: (state, action) => {
       state.editMode = true;
       state.editEmployee = action.payload;
+      state.showForm = true;
     },
     setPage: (state, action) => {
       state.currentRecords = action.payload;
@@ -112,6 +114,11 @@ export const employeeSlice = createSlice({
       state.displayEmployees = action.payload;
       
     },
+    showForm: (state, action) => {
+      state.showForm = action.payload;
+      
+    },
+
   },
   extraReducers: (builder) => {
     builder
@@ -121,6 +128,7 @@ export const employeeSlice = createSlice({
       .addCase(addEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.showForm = false;
         state.employees.push(action.payload);
         if (
           state.employeeType === action.payload.employeeType ||
@@ -178,6 +186,7 @@ export const employeeSlice = createSlice({
       .addCase(deleteEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.showForm = false;
         state.employees = original(state.employees).filter(
           (employee) => employee._id !== action.payload._id
         );
@@ -193,5 +202,5 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 } = employeeSlice.actions;
+export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 ,showForm} = employeeSlice.actions;
 export default employeeSlice.reducer;

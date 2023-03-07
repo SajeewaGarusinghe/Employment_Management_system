@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setType } from '../features/employeeSlice';
+import { setType, showForm } from '../features/employeeSlice';
 const SelectType = () => {
   const [employeeType, setEmployeeType] = useState('');
 
@@ -15,37 +15,36 @@ const SelectType = () => {
     };
   }, [employeeType, dispatch]);
 
+  const addHandler = () => {
+    dispatch(showForm(true));
+  };
+
   return (
+    <div>
+      <div className="row">
+        <div className="col-2">
+          <select
+            class="form-select"
+            name="employeeType"
+            id="employeeType"
+            value={employeeType}
+            onChange={(e) => {
+              setEmployeeType(e.target.value);
+            }}
+          >
+            <option value="Full time">Full time </option>
+            <option value="Part time">Part time</option>
+            <option value="Contract Basis">Contract Basis</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
 
-    <div >
-    <div className="row">
-
-      <div className='col-2'>
-       
-      <select
-        class="form-select"
-        name="employeeType"
-        id="employeeType"
-        value={employeeType}
-        onChange={(e) => {
-          setEmployeeType(e.target.value);
-        }}
-      >
-        <option value="Full time">Full time </option>
-        <option value="Part time">Part time</option>
-        <option value="Contract Basis">Contract Basis</option>
-        <option value="Other">Other</option>
-      </select>
+        <div className="col-3">
+          <button class="btn btn-primary" type="submit" onClick={addHandler}>
+            Add People
+          </button>
+        </div>
       </div>
-     
-     <div className='col-3'>
-     <button class="btn btn-primary" type="submit" >
-        Add People
-      </button>
-     </div>
-
-    
-    </div>
     </div>
   );
 };

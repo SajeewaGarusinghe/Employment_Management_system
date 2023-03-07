@@ -11,3 +11,11 @@ npm start
 
 npm install
 npm start
+
+
+#### i have following added .env content in case any connection issue
+
+NODE_ENV = production
+PORT = 5000
+MONGO_URI = mongodb+srv://sajeewa:sajeewa1234@sajeewacluster.aabhgdf.mongodb.net/employeeManagement?retryWrites=true&w=majority
+ 
