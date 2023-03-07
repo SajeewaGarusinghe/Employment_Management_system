@@ -31,7 +31,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div>
+    <div className='grid'>
       <TableItems />
       {showForm && <EmployeeForm />}
     </div>
