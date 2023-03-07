@@ -160,7 +160,7 @@ export const employeeSlice = createSlice({
         );
       //  console.log(updatedDisplayEmployee);
         state.displayEmployees = [...updatedDisplayEmployee, action.payload];
-         console.log(state.displayEmployees);
+       
          
       })
       .addCase(updateEmployee.rejected, (state, action) => {

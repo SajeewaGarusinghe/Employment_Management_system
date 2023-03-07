@@ -1,12 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  deleteEmployee,
-  getEmployees,
-  reset,
-  updateEmployee,
-  setEdit,
-} from '../features/employeeSlice';
+import { deleteEmployee, setEdit } from '../features/employeeSlice';
 
 const Table = () => {
   const { displayEmployees } = useSelector((state) => state.employee);
