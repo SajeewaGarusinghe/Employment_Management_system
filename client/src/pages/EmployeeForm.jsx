@@ -87,7 +87,7 @@ function EmployeeForm() {
     : 'Add People';
 
   return (
-    <div className="dashbord">
+    <div className="dashbord" style={{display:""}}>
       <div className="form">
         <div style={{ color: 'blue' }}>
           <label htmlFor="text">{text}</label>

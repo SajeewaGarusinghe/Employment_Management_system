@@ -1,19 +1,13 @@
 # Employment_Management_system
+
 Employment Management system from Node JS and a related Web technologies
 
+### 1) go to server folder and run following commands in terminal
 
+npm install
+npm start
 
-npm install --save express-async-handler
+### 2 ) go to client folder and run following commands in terminal
 
-
-
-
-So Immer is something like JSON.stringify with Objects to basically decode Redux State here instead of Objects that aren't stringified.
-
-So basically do:
-
-  import { original } from 'immer'
-    
-  console.log(original(state.products))
-
-(Make sure you do npm i immer)
+npm install
+npm start

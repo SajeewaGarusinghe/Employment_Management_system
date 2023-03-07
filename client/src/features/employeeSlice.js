@@ -104,6 +104,14 @@ export const employeeSlice = createSlice({
     setPage: (state, action) => {
       state.currentRecords = action.payload;
     },
+    setSortedData: (state, action) => {
+      state.employees = action.payload;
+    
+    },
+    setSortedData1: (state, action) => {
+      state.displayEmployees = action.payload;
+      
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -185,5 +193,5 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset, setType, setEdit,setPage } = employeeSlice.actions;
+export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 } = employeeSlice.actions;
 export default employeeSlice.reducer;

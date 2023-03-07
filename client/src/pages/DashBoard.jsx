@@ -27,7 +27,7 @@ const DashBoard = () => {
   }, [isError, message, dispatch]);
 
   return (
-    <div>
+    <div >
       {/* <div className="dashbord">
         <SelectType />
         <Table />

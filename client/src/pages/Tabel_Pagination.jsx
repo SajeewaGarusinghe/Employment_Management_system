@@ -15,16 +15,18 @@ const Tabel_Pagination = () => {
   const [recordsPerPage] = useState(5);
 
   useEffect(() => {
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = displayEmployees.slice(indexOfFirstRecord, indexOfLastRecord);
     dispatch(setPage(currentRecords));
-  }, [currentPage, dispatch,employeeType,employees]);
-
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = displayEmployees.slice(indexOfFirstRecord, indexOfLastRecord);
+    console.log('kkkkkk',currentRecords);
+  }, [currentPage, dispatch,employeeType,employees,displayEmployees]);
+  
   const nPages = Math.ceil(displayEmployees.length / recordsPerPage);
 
+
   return (
-    <div className="dashbord">
+    <div className="dashbord1">
       <SelectType />
       <div className="container mt-5">
         <Table />
