@@ -59,7 +59,7 @@ const formReducer = (state, action) => {
 function EmployeeForm() {
   const [formData, setFormData] = useReducer(formReducer, initialFormData);
   const dispatch = useDispatch();
-  const { editMode, editEmployee } = useSelector((state) => state.employee);
+  const { editMode, editEmployee,employees } = useSelector((state) => state.employee);
 
   useEffect(() => {
     if (editMode) {
@@ -68,7 +68,7 @@ function EmployeeForm() {
     return () => {
       setFormData({ type: 'reset' });
     };
-  }, [editMode, editEmployee]);
+  }, [editMode, editEmployee,employees]);
 
   const onSubmit = (e) => {
     e.preventDefault();

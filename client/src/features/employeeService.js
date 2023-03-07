@@ -11,7 +11,7 @@ const addEmployee = async (employeeData) => {
 };
 // Update employee
 const updateEmployee = async (employee) => {
-  console.log(employee);
+  // console.log(employee);
   const response = await axios.put(API_URL + employee._id, employee);
 
   return response.data;

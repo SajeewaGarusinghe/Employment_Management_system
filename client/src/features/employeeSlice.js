@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import employeeService from './employeeService';
+import { original } from 'immer';
 
 const initialState = {
   employees: [],
@@ -109,8 +110,30 @@ export const employeeSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.employees.push(action.payload);
+        if (
+          state.employeeType === action.payload.employeeType ||
+          state.employeeType === ''
+        ) {
+          state.displayEmployees.push(action.payload);
+        }
       })
       .addCase(addEmployee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+
+      .addCase(getEmployees.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getEmployees.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.employees = action.payload;
+        // console.log(state.employees);
+        state.displayEmployees = action.payload;
+      })
+      .addCase(getEmployees.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -121,27 +144,26 @@ export const employeeSlice = createSlice({
       .addCase(updateEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.editMode=false;
-        state.editEmployee='';
-        console.log([...state.employees,action.payload]);
-        // state.employees=[...state.employees,action.payload]
-        // state.employees.push(action.payload);
+        state.editMode = false;
+        state.editEmployee = '';
+        // console.log('update');
+
+        const updatedEmployeeArr = original(state.employees).filter(
+          (e) => e._id !== action.payload._id
+        );
+
+        state.employees = [...updatedEmployeeArr, action.payload];
+        state.displayEmployees = state.employees;
+        // console.log(state.displayEmployees);
+        const updatedDisplayEmployee = state.displayEmployees.filter(
+          (e) => e._id !== action.payload._id
+        );
+      //  console.log(updatedDisplayEmployee);
+        state.displayEmployees = [...updatedDisplayEmployee, action.payload];
+         console.log(state.displayEmployees);
+         
       })
       .addCase(updateEmployee.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-      })
-      .addCase(getEmployees.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getEmployees.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.employees = action.payload;
-        state.displayEmployees = action.payload;
-      })
-      .addCase(getEmployees.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -152,10 +174,14 @@ export const employeeSlice = createSlice({
       .addCase(deleteEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.employees = state.employees.filter(
-          (employee) => employee._id !== action.payload.id
+        //____________________________//
+
+        state.employees = original(state.employees).filter(
+          (employee) => employee._id !== action.payload._id
         );
-        state.displayEmployees = state.employees;
+        state.displayEmployees = original(state.displayEmployees).filter(
+          (employee) => employee._id !== action.payload._id
+        );
       })
       .addCase(deleteEmployee.rejected, (state, action) => {
         state.isLoading = false;
