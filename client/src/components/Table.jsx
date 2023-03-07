@@ -68,15 +68,14 @@ const Table = () => {
           <tr>
             <th scope="col">
               Display Name{' '}
-              <button onClick={nameSortHandler} className="btn btn-secondary">
-                sort{' '}
+              <button onClick={nameSortHandler} class="btn btn-light">
+                ⇵
               </button>
             </th>
             <th scope="col">
               Emp ID{' '}
-              <button onClick={IdSortHandler} className="btn btn-secondary">
-                {' '}
-                sort{' '}
+              <button onClick={IdSortHandler} class="btn btn-light">
+                ⇵
               </button>
             </th>
             <th scope="col">Designation</th>

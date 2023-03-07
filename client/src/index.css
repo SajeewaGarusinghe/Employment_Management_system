@@ -12,9 +12,7 @@ body {
     margin: auto;
     padding: auto;
 }
-.grid{
-    display: grid;
-}
+
 
 .form {
     font-family: 'Poppins', sans-serif;
@@ -59,37 +57,37 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .loadingSpinner {
+}
+
+.loadingSpinner {
     width: 64px;
     height: 64px;
     border: 8px solid;
     border-color: #000 transparent #555 transparent;
     border-radius: 50%;
     animation: spin 1.2s linear infinite;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
-  @media (max-width: 600px) {
+}
+
+@media (max-width: 600px) {
     .form {
-      width: 90%;
+        width: 90%;
     }
-  
+
     .heading h1 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
+
     .heading p {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  }
-  
+}

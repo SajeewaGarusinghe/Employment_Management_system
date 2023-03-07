@@ -123,7 +123,7 @@ export const employeeSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addEmployee.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(addEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -138,7 +138,7 @@ export const employeeSlice = createSlice({
         }
       })
       .addCase(addEmployee.rejected, (state, action) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
       })
@@ -158,10 +158,10 @@ export const employeeSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(updateEmployee.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(updateEmployee.fulfilled, (state, action) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.isSuccess = true;
         state.editMode = false;
         state.showForm = false;
@@ -182,10 +182,10 @@ export const employeeSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(deleteEmployee.pending, (state) => {
-        state.isLoading = true;
+        // state.isLoading = true;
       })
       .addCase(deleteEmployee.fulfilled, (state, action) => {
-        state.isLoading = false;
+        // state.isLoading = false;
         state.isSuccess = true;
         state.showForm = false;
         state.employees = original(state.employees).filter(
@@ -205,3 +205,5 @@ export const employeeSlice = createSlice({
 
 export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 ,showForm} = employeeSlice.actions;
 export default employeeSlice.reducer;
+
+
