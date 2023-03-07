@@ -6,7 +6,8 @@ const dotenv = require('dotenv').config();
 const { errorHandler } = require('./middleware/errorMiddleware');
 
 const connectDB = require('./config/db');
-const port = process.env.PORT || 5000;
+const port = 5000;
+// const port = process.env.PORT || 5000;
 
 const employeeRoutes = require('./routes/employeeRoutes');
 
