@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteEmployee, setEdit } from '../features/employeeSlice';
 
 const Table = () => {
-  const { displayEmployees } = useSelector((state) => state.employee);
+  const { currentRecords } = useSelector((state) => state.employee);
   const dispatch = useDispatch();
 
   useEffect(() => {
     return () => {};
-  }, [displayEmployees]);
+  }, [currentRecords]);
 
   return (
     <div>
@@ -24,7 +24,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {displayEmployees.map((employee) => (
+          {currentRecords.map((employee) => (
             <tr key={employee._id}>
               <th scope="row">{employee.displayName}</th>
               <td>{employee.employeeId}</td>

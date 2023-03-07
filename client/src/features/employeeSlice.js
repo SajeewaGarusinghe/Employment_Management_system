@@ -6,6 +6,7 @@ const initialState = {
   employees: [],
   employeeType: '',
   displayEmployees: [],
+  currentRecords: [],
   editMode: false,
   editEmployee: '',
   isError: false,
@@ -100,6 +101,9 @@ export const employeeSlice = createSlice({
       state.editMode = true;
       state.editEmployee = action.payload;
     },
+    setPage: (state, action) => {
+      state.currentRecords = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -122,7 +126,6 @@ export const employeeSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-
       .addCase(getEmployees.pending, (state) => {
         state.isLoading = true;
       })
@@ -146,22 +149,15 @@ export const employeeSlice = createSlice({
         state.isSuccess = true;
         state.editMode = false;
         state.editEmployee = '';
-        // console.log('update');
-
         const updatedEmployeeArr = original(state.employees).filter(
           (e) => e._id !== action.payload._id
         );
-
         state.employees = [...updatedEmployeeArr, action.payload];
         state.displayEmployees = state.employees;
-        // console.log(state.displayEmployees);
         const updatedDisplayEmployee = state.displayEmployees.filter(
           (e) => e._id !== action.payload._id
         );
-      //  console.log(updatedDisplayEmployee);
         state.displayEmployees = [...updatedDisplayEmployee, action.payload];
-       
-         
       })
       .addCase(updateEmployee.rejected, (state, action) => {
         state.isLoading = false;
@@ -174,8 +170,6 @@ export const employeeSlice = createSlice({
       .addCase(deleteEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        //____________________________//
-
         state.employees = original(state.employees).filter(
           (employee) => employee._id !== action.payload._id
         );
@@ -191,5 +185,5 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset, setType, setEdit } = employeeSlice.actions;
+export const { reset, setType, setEdit,setPage } = employeeSlice.actions;
 export default employeeSlice.reducer;
