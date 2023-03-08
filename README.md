@@ -12,10 +12,14 @@ npm start
 npm install
 npm start
 
+### start page
 
-#### i have following added .env content in case any connection issue
+![start page](/screenshots/1.png 'start page')
 
-NODE_ENV = production
-PORT = 5000
-MONGO_URI = mongodb+srv://sajeewa:sajeewa1234@sajeewacluster.aabhgdf.mongodb.net/employeeManagement?retryWrites=true&w=majority
- 
+### Add employee view
+
+![start page](/screenshots/2.png 'Add employee view')
+
+### Edit employee view
+
+![start page](/screenshots/3.png 'Edit employee view')
