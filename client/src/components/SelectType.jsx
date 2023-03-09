@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setType, setShowForm } from '../features/employeeSlice';
 const SelectType = () => {
-  const [employeeType, setEmployeeType] = useState('');
+  const [employeeType, setEmployeeType] = useState('Employee Types');
   const { showForm } = useSelector((state) => state.employee);
   const dispatch = useDispatch();
 
@@ -20,8 +20,8 @@ const SelectType = () => {
   };
 
   return (
-    <div className="row">
-      <div className="col-2">
+    <>
+      <div>
         <select
           className="form-select"
           name="employeeType"
@@ -31,6 +31,7 @@ const SelectType = () => {
             setEmployeeType(e.target.value);
           }}
         >
+          <option value="Employee Types">Employee Types</option>
           <option value="Full time">Full time </option>
           <option value="Part time">Part time</option>
           <option value="Contract Basis">Contract Basis</option>
@@ -38,12 +39,12 @@ const SelectType = () => {
         </select>
       </div>
 
-      <div className="col-3">
+      <div>
         <button className="btn btn-primary" type="submit" onClick={addHandler}>
           {showForm ? 'Hide Form' : 'Add People'}
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

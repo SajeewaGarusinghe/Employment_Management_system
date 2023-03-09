@@ -9,7 +9,7 @@ const initialState = {
   currentRecords: [],
   editMode: false,
   editEmployee: '',
-  showForm:false,
+  showForm: false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -94,9 +94,13 @@ export const employeeSlice = createSlice({
     reset: (state) => initialState,
     setType: (state, action) => {
       state.employeeType = action.payload;
-      state.displayEmployees = state.employees.filter(
-        (employee) => employee.employeeType === action.payload
-      );
+      if (action.payload === 'Employee Types') {
+        state.displayEmployees = state.employees;
+      } else {
+        state.displayEmployees = state.employees.filter(
+          (employee) => employee.employeeType === action.payload
+        );
+      }
     },
     setEdit: (state, action) => {
       state.editMode = true;
@@ -108,19 +112,15 @@ export const employeeSlice = createSlice({
     },
     setSortedData: (state, action) => {
       state.employees = action.payload;
-    
     },
     setSortedData1: (state, action) => {
       state.displayEmployees = action.payload;
-      
     },
     setShowForm: (state, action) => {
       state.showForm = action.payload;
-      state.editEmployee=''
-      state.editMode=false
-      
+      state.editEmployee = '';
+      state.editMode = false;
     },
-
   },
   extraReducers: (builder) => {
     builder
@@ -205,7 +205,13 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 ,setShowForm} = employeeSlice.actions;
+export const {
+  reset,
+  setType,
+  setEdit,
+  setPage,
+  setSortedData,
+  setSortedData1,
+  setShowForm,
+} = employeeSlice.actions;
 export default employeeSlice.reducer;
-
-

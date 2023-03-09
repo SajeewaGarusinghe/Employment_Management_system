@@ -29,7 +29,7 @@ const TabelItem = () => {
   return (
     <>
       <div className="item-heading">People</div>
-      <div className="right-align-item">
+      <div className="right-align-container">
         <SelectType />
       </div>
 

@@ -59,8 +59,25 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
-.right-align-item{
-align-self: flex-end;
+
+.right-align-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.right-align-container div {
+    padding: 10px;
+
+}
+
+.right-align-container button {
+
+    width: 150px;
+}
+
+.right-align-container select {
+
+    width: 200px;
 }
 
 .loadingSpinnerContainer {
