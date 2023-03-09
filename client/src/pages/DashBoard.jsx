@@ -31,9 +31,16 @@ const DashBoard = () => {
   }
 
   return (
-    <div className='flex-container'>
-      <TableItems />
-      {showForm && <EmployeeForm />}
+    <div className="my-flex-container">
+      <div className="my-flex-item item-1">
+        <TableItems />
+      </div>
+
+      {showForm && (
+        <div className="my-flex-item item-2">
+          <EmployeeForm />
+        </div>
+      )}
     </div>
   );
 };

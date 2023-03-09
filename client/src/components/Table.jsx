@@ -62,7 +62,7 @@ const Table = () => {
   };
 
   return (
-    <div>
+    < >
       <table className="table table-striped">
         <thead>
           <tr>
@@ -117,7 +117,7 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

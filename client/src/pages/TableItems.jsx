@@ -27,17 +27,19 @@ const TabelItem = () => {
   const nPages = Math.ceil(displayEmployees.length / recordsPerPage);
 
   return (
-    <div className="dashbord1">
-      <SelectType />
-      <div className="container mt-5">
-        <Table />
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+    <>
+      <div className="item-heading">People</div>
+      <div className="right-align-item">
+        <SelectType />
       </div>
-    </div>
+
+      <Table />
+      <Pagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </>
   );
 };
 
