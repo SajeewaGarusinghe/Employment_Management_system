@@ -95,7 +95,7 @@ export const employeeSlice = createSlice({
     setType: (state, action) => {
       state.employeeType = action.payload;
       state.displayEmployees = state.employees.filter(
-        (employee) => employee.employeeType == action.payload
+        (employee) => employee.employeeType === action.payload
       );
     },
     setEdit: (state, action) => {
@@ -114,8 +114,10 @@ export const employeeSlice = createSlice({
       state.displayEmployees = action.payload;
       
     },
-    showForm: (state, action) => {
+    setShowForm: (state, action) => {
       state.showForm = action.payload;
+      state.editEmployee=''
+      state.editMode=false
       
     },
 
@@ -203,7 +205,7 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 ,showForm} = employeeSlice.actions;
+export const { reset, setType, setEdit,setPage,setSortedData,setSortedData1 ,setShowForm} = employeeSlice.actions;
 export default employeeSlice.reducer;
 
 

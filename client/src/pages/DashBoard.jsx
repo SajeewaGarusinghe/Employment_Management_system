@@ -31,7 +31,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div className='grid'>
+    <div className='flex-container'>
       <TableItems />
       {showForm && <EmployeeForm />}
     </div>

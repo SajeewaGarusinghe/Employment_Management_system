@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setType, showForm } from '../features/employeeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setType, setShowForm } from '../features/employeeSlice';
 const SelectType = () => {
   const [employeeType, setEmployeeType] = useState('');
-
+  const {showForm }= useSelector((state) => state.employee);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,8 @@ const SelectType = () => {
   }, [employeeType, dispatch]);
 
   const addHandler = () => {
-    dispatch(showForm(true));
+    dispatch(setShowForm(!showForm));
+    
   };
 
   return (
@@ -45,7 +46,8 @@ const SelectType = () => {
             type="submit"
             onClick={addHandler}
           >
-            Add People
+            {showForm?"Hide Form":"Add People"}
+             
           </button>
         </div>
       </div>
