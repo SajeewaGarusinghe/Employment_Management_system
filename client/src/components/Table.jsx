@@ -62,18 +62,18 @@ const Table = () => {
   };
 
   return (
-    < >
+    <div>
       <table className="table table-striped">
         <thead>
-          <tr>
-            <th scope="col">
+          <tr >
+            <th scope="col" >
               Display Name{' '}
               <button onClick={nameSortHandler} class="btn btn-light">
                 ⇵
               </button>
             </th>
             <th scope="col">
-              Emp ID{' '}
+              Emp ID
               <button onClick={IdSortHandler} class="btn btn-light">
                 ⇵
               </button>
@@ -117,7 +117,9 @@ const Table = () => {
           ))}
         </tbody>
       </table>
-    </>
+
+      
+    </div>
   );
 };
 
